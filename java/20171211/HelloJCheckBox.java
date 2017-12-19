@@ -3,7 +3,7 @@ import java.awt.*;
 import java.awt.event.*;
 public class HelloJCheckBox extends JFrame implements ActionListener{
 	private JCheckBox[] jcb = new JCheckBox[3];
-	private Boolean[] text = new Boolean[3];
+	// private Boolean[] text = new Boolean[3];
 	private JLabel[] jl = new JLabel[3];
 	HelloJCheckBox(){
 		setTBD("HelloJCheckBox", new int[] {400,400,300,200});
