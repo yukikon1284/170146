@@ -3,15 +3,15 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.net.*;
 import java.io.*;
-public class MyServerGui03 extends JFrame implements ActionListener {
+public class MyClientGui03 extends JFrame implements ActionListener {
 	JLabel jl = new JLabel();
 	JTextField jtf = new JTextField(10);
 	public static void main(String[] args) {
-		MyServerGui03 msg = new MyServerGui03();
+		MyClientGui03 msg = new MyClientGui03();
 		msg.setVisible(true);
 	}
-	MyServerGui03(){
-		setTBD("MyServerGui03", new int[] {400,400,300,200});
+	MyClientGui03(){
+		setTBD("MyClientGui03", new int[] {400,400,300,200});
 		JButton jb = new JButton("click");
 		jb.addActionListener(this);
 		JPanel jp = new JPanel();
@@ -27,9 +27,8 @@ public class MyServerGui03 extends JFrame implements ActionListener {
 	}
 	public void actionPerformed(ActionEvent e1){
 		try{
-			ServerSocket servsock = new ServerSocket(5999, 300);
-			Socket sock = servsock.accept();
-			InputStream instr = sock.getInputStream();
+			Socket serverSocket = new Socket("localhost", 5000);
+			InputStream instr = serverSocket.getInputStream();
 			byte[] buff = new byte[1024];
 			int n = instr.read(buff);
 			System.out.write(buff, 0, n);
