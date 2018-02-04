@@ -8,6 +8,7 @@ public class MyClient03 {
 			byte[] buff = new byte[1024];
 			int n = instr.read(buff);
 			System.out.write(buff, 0, n);
+			instr.close();
 		}catch(Exception e){
 			System.out.println(e);
 		}

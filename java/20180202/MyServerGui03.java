@@ -2,6 +2,7 @@ import java.awt.*;
 import javax.swing.*;
 import java.awt.event.*;
 import java.net.*;
+import java.io.*;
 public class MyServerGui03 extends JFrame implements ActionListener {
 	JLabel jl = new JLabel();
 	JTextField jtf1 = new JTextField();
@@ -19,7 +20,6 @@ public class MyServerGui03 extends JFrame implements ActionListener {
 		add(jp);
 		jp.add(this.jl);
 		jp.add(this.jtf1);
-
 	}
 	private void setTBD(String title, int[] size){
 		setTitle(title);
@@ -30,13 +30,13 @@ public class MyServerGui03 extends JFrame implements ActionListener {
 		try{
 			ServerSocket servsock = new ServerSocket(5999, 300);
 			Socket sock = servsock.accept();
-
+			InputStream instr = sock.getInputStream();
 			byte[] buff = new byte[1024];
 			int n = instr.read(buff);
 			System.out.write(buff, 0, n);
-			this.jl.setText(write(buff, 0, n));
-			this.jtf.setText(sock.getInetAddress());
-
+			this.jl.setText(new String(buff, 0, n));
+			this.jtf1.setText(""+sock.getInetAddress());
+			instr.close();
 		}catch(Exception e){
 			System.out.println(e);
 		}
