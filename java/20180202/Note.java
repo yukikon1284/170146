@@ -21,18 +21,25 @@ public class Note extends JFrame{
 		setBounds(size[0], size[1], size[2], size[3]);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 	}
-	/*private JButton setJB(String jbc){
+	private JButton setJB(String jbc){
 		JButton jb = new JButton(jbc);
 		jb.setActionCommand(jbc);
 		return jb;
 	}
-	private JPanel setJP(){
-		
+	private JPanel setJP(JPanel jp, final JLabel jl){
+		jp.add(jl);
+		return jl;
 	}
-	private JPanel setJP(JTextField jtf){
-
+	private JPanel setJP(JPanel jp, final JTextField[] jtf){
+		for (int i=0; i<JTextField.length; i++) setJP(jp, jtf[i]);
+		return jp;
 	}
-	private JPanel setJP(JPanel jp, int[] gridLayInt){
-		return jp.setLayout(gridLayInt[0], gridLayInt[1]);
-	}*/
+	private JPanel setJP(JPanel jp, final JTextField jtf){
+		jp.add(jtf);
+		return jp;
+	}
+	private JPanel setJP(JPanel jp, final int[] gridLayInt){
+		jp.setLayout(new GridLayout(gridLayInt[0], gridLayInt[1]));
+		return jp;
+	}
 }
