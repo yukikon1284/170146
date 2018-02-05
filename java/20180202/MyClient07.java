@@ -6,7 +6,6 @@ public class MyClient07 {
 		try{
 			Socket serverSocket = new Socket("localhost", 3999);
 			OutputStream out = serverSocket.getOutputStream();
-
 			while(true){
 				byte[] buff = new byte[1024];
 				buff = scanS().getBytes();
@@ -17,7 +16,6 @@ public class MyClient07 {
 				System.out.write(buff, 0, n);
 				System.out.println("");
 			}
-
 		}catch(Exception e){
 			System.out.println(e);
 		}

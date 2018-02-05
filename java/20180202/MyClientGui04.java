@@ -3,21 +3,19 @@ import javax.swing.*;
 import java.awt.event.*;
 import java.net.*;
 import java.io.*;
-public class MyServerGui03 extends JFrame implements ActionListener {
-	JLabel jl = new JLabel();
+public class MyClientGui04 extends JFrame implements ActionListener {
 	JTextField jtf = new JTextField(10);
 	public static void main(String[] args) {
-		MyServerGui03 msg = new MyServerGui03();
+		MyClientGui04 msg = new MyClientGui04();
 		msg.setVisible(true);
 	}
-	MyServerGui03(){
-		setTBD("MyServerGui03", new int[] {400,400,300,200});
+	MyClientGui04(){
+		setTBD("MyClientGui04", new int[] {400,400,300,200});
 		JButton jb = new JButton("click");
 		jb.addActionListener(this);
 		JPanel jp = new JPanel();
 		jp.add(jb, BorderLayout.SOUTH);
 		add(jp);
-		jp.add(this.jl);
 		jp.add(this.jtf);
 	}
 	private void setTBD(String title, int[] size){
@@ -27,15 +25,14 @@ public class MyServerGui03 extends JFrame implements ActionListener {
 	}
 	public void actionPerformed(ActionEvent e1){
 		try{
-			ServerSocket servsock = new ServerSocket(5999, 300);
-			Socket sock = servsock.accept();
-			InputStream instr = sock.getInputStream();
-			byte[] buff = new byte[1024];
-			int n = instr.read(buff);
-			System.out.write(buff, 0, n);
-			this.jl.setText(new String(buff, 0, n));
-			this.jtf.setText(new String(buff, 0, n));
-			instr.close();
+			Socket serverSocket = new Socket("172.16.21.56", 4999);
+			OutputStream out = serverSocket.getOutputStream();
+			String[] str = {"170146","yukikon1284",this.jtf.getText()};
+			for (int i=0; i<str.length; i++) {
+				byte[] buff = str[i].getBytes();
+				out.write(buff, 0, buff.length);
+			}
+			serverSocket.close();
 		}catch(Exception e){
 			System.out.println(e);
 		}
