@@ -1,23 +1,18 @@
-import java.net.*;
-import javax.swing.*;
-import java.awt.*;
-public class Note extends JFrame{
-	public static void main(String[] args) {
-		Note no = new Note();
-		no.setVisible(true);
+import javax.swing.JFrame;
+import javax.swing.JButton;
+import javax.swing.JPanel;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
+public class SwingTool {
+	public static void setTBD
+	// JFrame
+	public static JFrame setJF(JFrame frame, String title, int[] size){
+		frame.setTitle(title);
+		frame.setBounds(size[0], size[1], size[2], size[3]);
+		frame.setDefaultCloseOperation(frame.EXIT_ON_CLOSE);
+		return frame;
 	}
-	Note(){
-		setTBD("asd", new int[] {400,400,300,200});
-		JPanel asd = new JPanel();
-		JLabel[] jl = {new JLabel("qwe"), new JLabel("asd")};
-		int[] gridLay = {2,1};
-		add(setJP(setJP(asd, jl), gridLay));
-	}
-	public static void setTBD(String title, int[] size){
-		setTitle(title);
-		setBounds(size[0], size[1], size[2], size[3]);
-		setDefaultCloseOperation(EXIT_ON_CLOSE);
-	}
+	// JPanel
 	// JButton
 	public static JButton setJB(final String jbc){
 		JButton jb = new JButton(jbc);
@@ -29,7 +24,6 @@ public class Note extends JFrame{
 		for (int i=0; i<jb.length; i++) jb[i] = setJB(jbc[i]);
 		return jb;
 	}
-	// JButton
 	public static JPanel setJP(JPanel jp, final JButton[] jb){
 		for (int i=0; i<jb.length; i++) setJP(jp, jb[i]);
 		return jp;
@@ -54,11 +48,6 @@ public class Note extends JFrame{
 	}
 	public static JPanel setJP(JPanel jp, final JTextField jtf){
 		jp.add(jtf);
-		return jp;
-	}
-	// GridLayout
-	public static JPanel setJP(JPanel jp, final int[] gridLayInt){
-		jp.setLayout(new GridLayout(gridLayInt[0], gridLayInt[1]));
 		return jp;
 	}
 }
